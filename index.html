@@ -19,18 +19,24 @@
     </header>
 
     <section class="slide" id="cover">
-        <h2>Shower Presentation Engine</h2>
-        <p>Brought to you by <a href="http://pepelsbey.net">Vadim Makeev</a></p>
+        <h2>CSS animations</h2>
+        <p>Brought to you by <a href="https://github.com/benj4z">Jakuba Eugene</a></p>
         <figure>
-            <img class="cover" src="pictures/cover.jpg" alt="Hands on the orange typewriter in a park">
-            <figcaption class="copyright right white">
-                <a href="http://fiftyfootshadows.net/">© John Carey</a>
-            </figcaption>
+            <img class="cover" src="https://media.giphy.com/media/yYSSBtDgbbRzq/giphy.gif">
         </figure>
         <style>
+            #cover {
+                padding-top: 0px;
+            }
+
+            #cover img{
+                top: 60%;
+                max-width: 50%;
+            }
+
             #cover h2 {
-                margin: 30px 0 0;
-                color: white;
+                margin: 20px 0 0;
+                color: #000;
                 text-align: center;
                 font-size: 70px;
             }
@@ -38,66 +44,170 @@
             #cover p {
                 margin: 10px 0 0;
                 text-align: center;
-                color: white;
+                color: #000;
                 font-style: italic;
                 font-size: 20px;
             }
 
             #cover p a {
-                color: white;
+                color: #000;
             }
         </style>
     </section>
 
     <section class="slide">
-        <h2>Shower key features</h2>
+        <h2>What is CSS Animations?</h2>
+        <p><b>CSS animations</b> make it possible to animate transitions from one CSS style configuration to another.</p>
+    </section>
+
+    <section class="slide">
+        <h2>Why we need to use animations in our interfaces?</h2>
+        <p>Animations will <i>help</i> our users to:</p>
         <ol>
-            <li>Built on HTML, CSS and JavaScript</li>
-            <li>Works in all modern browsers</li>
-            <li>Themes are separated from engine</li>
-            <li>Fully keyboard accessible</li>
-            <li>Printable to PDF</li>
+            <li>Better understand our products</li>
+            <li class="next">To catch their attention</li>
+            <li class="next">To just getting fun and delight</li>
         </ol>
-        <p class="note">Shower ['ʃəuə] noun. A person or thing that shows.</p>
     </section>
 
     <section class="slide">
-        <h2>Plain text on your slides</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur <a href="#4">adipisicing</a> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <em>quis nostrud</em> exercitation ullamco laboris <strong>nisi ut aliquip</strong> ex ea commodo consequat. Duis aute irure <i>dolor</i> in reprehenderit in voluptate velit esse cillum <b>dolore</b> eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in <code>&lt;culpa&gt;</code> qui officia deserunt mollit anim id est laborum.</p>
+        <h2>Examples of first benefit</h2>
+        <p>Visual and interactive representation of submitting credit card</p>
+        <figure>
+            <figcaption class="copyright firstBenefit">
+                <img src="https://cdn.dribbble.com/users/167041/screenshots/3217202/hey.gif">
+                <a href="https://dribbble.com/shots/3217202-Submit-Credit-Card-Flow-GIF-Animation">© Azís Pradana</a>
+            </figcaption>
+        </figure>
+        <style>
+            .firstBenefit {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .firstBenefit img{
+                max-width: 50%;
+            }
+        </style>
     </section>
 
     <section class="slide">
-        <h2>Two columns if you like</h2>
+        <h2>Examples of first benefit</h2>
+        <p>Example of interactive onboarding section</p>
+        <figure>
+            <figcaption class="copyright firstBenefit">
+                <img src="https://cdn.dribbble.com/users/14273/screenshots/3363331/onboarding.gif">
+                <a href="https://dribbble.com/shots/3363331-Onboarding-Flow">© Sal</a>
+            </figcaption>
+        </figure>
+        <style>
+            .firstBenefit {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                opacity: 1;
+            }
+
+            .firstBenefit img{
+                max-width: 50%;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Example of second benefit</h2>
         <div class="columns two">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
+            <img src="https://cdn-images-1.medium.com/max/1600/0*JeAUeQMcb2TcNDvN.gif">
+            <img src="https://cdn-images-1.medium.com/max/1600/0*oTlT2NLrH8KhnFOx.gif">
+        </div>
+        <style>
+            .columns img {
+                width: 100%;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Example of third benefit</h2>
+        <div class="columns two">
+            <img src="https://cdn-images-1.medium.com/max/1600/1*5wvrdg8fcF0GEFRN_cNCgg.gif" alt="© Jakub Antalík">
+            <img src="https://cdn-images-1.medium.com/max/1600/1*_JAPSHGlugy6sXb7wcHUfg.gif" alt="© Jakub Antalík">
         </div>
     </section>
 
     <section class="slide">
-        <h2>All kind of lists</h2>
+        <h2>Two type of animation</h2>
+        <p>We have two way in CSS how we can affect on styles configuration:</p>
         <ol>
-            <li>Simple lists are marked with bullets</li>
-            <li>Ordered lists begin with a number</li>
-            <li>You can even nest lists one inside another
-                <ul>
-                    <li>Or mix their types</li>
-                    <li>But do not go too far</li>
-                    <li>Otherwise audience will be bored</li>
-                </ul>
-            </li>
-            <li>Look, seven rows exactly!</li>
+            <li>Use rule 'transition'</li>
+            <li>Use CSS animations configuration</li>
         </ol>
     </section>
 
     <section class="slide">
-        <h2>Serious citations</h2>
-        <figure>
-            <blockquote>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
-            </blockquote>
-            <figcaption>Marcus Tullius Cicero</figcaption>
-        </figure>
+        <h2>Transition syntax</h2>
+        <p>You can use shorthand or also use separate properties. <i>Applies to all elements and pseudo-elements</i></p>
+        <pre>
+            <code>transition: <i>property</i> | <i>duration</i> | <i>timing-function</i> | <i>delay</i></code>
+        </pre>
+        <ul>
+            <li>transition-delay</li>
+            <li>transition-duration</li>
+            <li>transition-property</li>
+            <li>transition-timing-function</li>
+        </ul>
+    </section>
+
+    <section class="slide" id="transitionUsage">
+        <h2>Transition example</h2>
+        <p>Usage:</p>
+        <div class="columns two">
+            <pre>
+                <code>.btn {</code>
+                <code>  color: white</code>
+                <code>  background-color: green</code>
+                <code>  border: 1px solid transparent</code>
+                <code>  transition: all .5s</code>
+                <code>}</code>
+            </pre>
+            <pre>
+                <code>.btn:hover {</code>
+                <code>  color: green</code>
+                <code>  background-color: transparent</code>
+                <code>  border-color: green</code>
+                <code>}</code>
+            </pre>
+        </div>
+        <style>
+            #transitionUsage .columns{
+                font-size: 18px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Transition example</h2>
+        <button type="button" class="btn">
+            My button
+        </button>
+        <style>
+            .btn {
+                cursor: pointer;
+                padding: 8px 12px;
+                border-radius: 5px;
+                color: white;
+                background-color: green;
+                border: 1px solid transparent;
+                transition: all .5s;
+            }
+
+            .btn:hover {
+                color: green;
+                background-color: transparent;
+                border-color: green;
+            }
+        </style>
     </section>
 
     <section class="slide">
