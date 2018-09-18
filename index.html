@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="node_modules/shower-ribbon/styles/styles.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style>
         .shower {
             --slide-ratio: calc(16 / 9);
@@ -64,7 +65,7 @@
         <h2>Why we need to use animations in our interfaces?</h2>
         <p>Animations will <i>help</i> our users to:</p>
         <ol>
-            <li>Better understand our products</li>
+            <li>Better understanding of our products</li>
             <li class="next">To catch their attention</li>
             <li class="next">To just getting fun and delight</li>
         </ol>
@@ -211,100 +212,333 @@
     </section>
 
     <section class="slide">
-        <h2>Code samples</h2>
-        <pre>
-            <code>&lt;!DOCTYPE html&gt;</code>
-            <code class="mark">&lt;html lang="en"&gt;</code>
-            <code><mark>&lt;head&gt;</mark> <span class="comment">&lt;!--Comment--&gt;</span></code>
-            <code>    &lt;title&gt;Shower&lt;/title&gt;</code>
-            <code>    &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;</code>
-            <code>    &lt;link rel="stylesheet" href="screen.css"&gt;</code>
-            <code><mark>&lt;/head&gt;</mark></code>
-        </pre>
+        <h2>Transition advanced example</h2>
+        <a href="#!solutions/solution" class="line-item">
+            <div class="tag">решение</div>
+            <span class="line-visible"></span>
+            <span class="line-invisible"></span>
+            <div class="name">Атомная энергетика</div>
+            <svg viewBox="0 0 76 76" class="svgico solution-icon">
+              <use xlink:href="#atom_icon"></use>
+            </svg>
+            <div class="more">подробнее</div>
+        </a>
+        <style>
+            .line-item {
+              overflow: hidden;
+              display: inline-block;
+              width: 55%;
+              height: 300px;
+              vertical-align: middle;
+              background-color: #fff;
+              color: #333 !important;
+              position: relative;
+              text-decoration: none;
+              transition: all .25s ease;
+            }
+            .line-item:first-child {
+              background-color: #f2f2f2;
+            }
+            .line-item:nth-child(3n) {
+              background-color: #f2f2f2;
+            }
+            .line-item .tag {
+              position: absolute;
+              font-weight: 800;
+              line-height: 110%;
+              color: #fff;
+              top: -120%;
+              left: 50px;
+              text-transform: uppercase;
+              transition: top 0.2s ease-in-out;
+            }
+            .line-item .line-visible {
+              display: block;
+              height: 2px;
+              width: 60px;
+              background-color: #E2112E;
+              position: absolute;
+              left: auto;
+              right: calc(100% - 110px);
+              top: 171px;
+              transition: color 0.45s ease, width 0.15s ease-in-out;
+            }
+            .line-item .line-visible.back {
+              width: 110px;
+            }
+            .line-item .line-visible.forward {
+              left: 0px;
+              right: auto;
+              width: 0px;
+            }
+            .line-item .line-invisible {
+              display: block;
+              height: 2px;
+              width: 0px;
+              left: auto;
+              right: 4px;
+              top: 171px;
+              max-width: calc(100% - 50px);
+              position: absolute;
+              transition: color 0.45s ease, width 0.22s ease-in-out;
+            }
+            .line-item .line-invisible.back {
+              width: 100%;
+            }
+            .line-item .line-invisible.forward {
+              left: 50px;
+              right: auto;
+              width: 60px;
+            }
+            .line-item svg {
+              position: absolute;
+              right: 50px;
+              bottom: 51px;
+              transition: all .35s ease;
+            }
+            .line-item .name {
+              font-weight: 800;
+              font-size: 20px;
+              position: absolute;
+              left: 50px;
+              bottom: 64px;
+              transform: translateY(0%);
+              transition: transform 0.2s ease-in-out;
+            }
+            .line-item .more {
+              font-size: 18px;
+              font-weight: 800;
+              color: #EC8E8E;
+              position: absolute;
+              bottom: 60px;
+              left: 50px;
+              opacity: 0;
+              transition: opacity 0.2s ease-in-out;
+            }
+            .line-item:hover {
+                color: #fff !important;
+            }
+            .line-item:hover .tag {
+              top: 35px;
+              transition-delay: 280ms;
+            }
+            .line-item:hover .more {
+              opacity: 1;
+              transition-delay: 280ms;
+            }
+            .line-item:hover .name {
+              transform: translateY(-100px);
+              transition-delay: 280ms;
+            }
+            .line-item:hover {
+              background-color: #E2112E;
+              color: #fff;
+            }
+            .line-item:hover svg {
+              fill: #fff;
+            }
+            .line-item:hover .line-visible,
+            .line-item:hover .line-invisible {
+              background-color: #fff;
+            }
+            .line-item.black {
+              background-color: #333;
+              width: 33.48%;
+              border-left: 1px solid #6A6A6A;
+              margin-right: -4px;
+            }
+            .line-item.black:first-child {
+              border-left: none;
+            }
+            .line-item.black .tag {
+              top: 35px;
+            }
+            .line-item.black .name,
+            .line-item.black .more {
+              color: #fff;
+            }
+        </style>
+        <script type="text/javascript">
+            var doc = $(document);
+
+            doc.on('mouseover', '.line-item', function(){
+                var first_line = $(this).find('.line-visible');
+                var second_line = $(this).find('.line-invisible');
+                var second_right = $(this).width() - 50;
+                console.log(1);
+                if (first_line.hasClass('back forward') && second_line.hasClass('back forward')){
+                    return false;
+                } else {
+                    // first line anim
+                    first_line.addClass('back');
+                    setTimeout(function(){
+                        first_line.addClass('forward');
+                    }, 400);
+                    setTimeout(function(){
+                        second_line.addClass('back');
+                        setTimeout(function(){
+                            second_line.addClass('forward');
+                        }, 400);
+                    }, 400);
+                }
+            });
+
+            doc.on('mouseleave', '.line-item', function(){
+                var first_line = $(this).find('.line-visible');
+                var second_line = $(this).find('.line-invisible');
+                var first_right = $(this).width() - 110;
+                first_line.fadeOut(100);
+                second_line.fadeOut(100);
+                setTimeout(function(){
+                    first_line.removeClass('back forward').fadeIn();
+                    second_line.removeClass('back forward').fadeIn();
+                }, 400);
+                setTimeout(function(){
+                    first_line.removeClass('back forward');
+                    second_line.removeClass('back forward');
+                }, 800);
+            });
+        </script>
     </section>
 
     <section class="slide">
-        <h2>Even tables</h2>
-        <table>
-        <tr>
-            <th scope="col">Locavore</th>
-            <th>Umami</th>
-            <th>Helvetica</th>
-            <th>Vegan</th>
-        </tr>
-        <tr>
-            <th scope="row">Fingerstache</th>
-            <td>Kale</td>
-            <td>Chips</td>
-            <td>Keytar</td>
-        </tr>
-        <tr>
-            <th scope="row">Sriracha</th>
-            <td>Gluten-free</td>
-            <td>Ennui</td>
-            <td>Keffiyeh</td>
-        </tr>
-        <tr>
-            <th scope="row">Thundercats</th>
-            <td>Jean</td>
-            <td>Shorts</td>
-            <td>Biodiesel</td>
-        </tr>
-        <tr>
-            <th scope="row">Terry</th>
-            <td>Richardson</td>
-            <td>Swag</td>
-            <td>Blog</td>
-        </tr>
-        </table>
-        <p>It’s good to have information organized.</p>
+        <h2>Keyframes syntax</h2>
+        <div class="columns">
+            <pre>
+               <code>@keyframes ANIMATION-NAME {</code>
+                  <code>0%   { opacity: 0; }</code>
+                  <code>50%  { opacity: 0.5; }</code>
+                  <code>100% { opacity: 1; }</code>
+                <code>}</code>
+            </pre>
+        </div>
     </section>
 
-    <section class="slide" id="picture">
-        <h2>Pictures</h2>
-        <figure>
-            <img class="cover" src="pictures/picture.jpg" alt="Orange typewriter on a wooden table close-up">
-            <figcaption class="copyright right white">
-                <a href="http://fiftyfootshadows.net/">© John Carey</a>
-            </figcaption>
-        </figure>
-        <style>
-            #picture h2 {
-                color: white;
+    <section class="slide">
+        <h2>Keyframes syntax</h2>
+        <div class="columns syntax14">
+            <pre>
+               <code>.box {</code>
+                  <code>animation-name: ANIMATION-NAME;</code>
+                  <code>animation-duration: 4s;</code>
+                  <code>animation-iteration-count: 10;</code>
+                  <code>animation-direction: alternate; /* or: normal */</code>
+                  <code>animation-timing-function: ease-out; /* or: ease, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) */</code>
+                  <code>animation-fill-mode: forwards; /* or: backwards, both, none */</code>
+                  <code>animation-delay: 2s;</code>
+                }
+            </pre>
+        </div>
+
+        <style type="text/css">
+            .syntax14 {
+                font-size: 14px;
             }
         </style>
     </section>
 
     <section class="slide">
-        <h2 class="shout shrink">You can even shout this way</h2>
+        <h2>Keyframes example</h2>
+        <div class="center">
+            <div class="hearth"></div>
+        </div>
+        <style>
+            .center {
+                height: 350px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .hearth:before {
+                left: 0;
+                top: -50%;
+            }
+
+            .hearth {
+                --size: 100px;
+                animation: beat 0.5s infinite alternate ease-in-out;
+                background-color: #e61a1a;
+                height: var(--size);
+                position: relative;
+                transform: rotateZ(-45deg);
+                width: var(--size);
+            }
+
+            .hearth:before,
+            .hearth:after {
+                background-color: inherit;
+                border-radius: 50%;
+                content: '';
+                height: 100%;
+                position: absolute;
+                width: 100%;
+            }
+
+            .hearth:after {
+                right: -50%;
+                top: 0;
+            }
+
+            .hearth:hover {
+                animation-play-state: paused;
+            }
+
+            @keyframes beat {
+                to {
+                    background-color: #ff0000;
+                    transform: rotate(-45deg) scale(1.2);
+                }
+            }
+        </style>
     </section>
 
     <section class="slide">
-        <h2>Inner navigation</h2>
-        <ol>
-            <li>Lets you reveal list items one by one</li>
-            <li class="next">To keep some key points</li>
-            <li class="next">In secret from audience</li>
-            <li class="next">But it will work only once</li>
-            <li class="next">Nobody wants to see the same joke twice</li>
-        </ol>
+        <h2>Step syntax</h2>
+        <p>The steps() function controls exactly how many keyframes will render in the animation timeframe.</p>
+        <code>
+            @keyframes move {
+              from { top: 0; left: 0; }
+              to   { top: 100px; left: 100px; }
+            }
+        </code>
+        <br>
+        <br>
+        <code>
+            .move {
+  animation: move 10s steps(10) infinite alternate;
+}
+        </code>
     </section>
 
-    <section class="slide" id="see-more">
-        <h2 class="shout">
-            <img src="pictures/logo.svg" alt="Shower logo">
-            <a href="https://github.com/shower/shower">See more on GitHub</a>
-        </h2>
+    <section class="slide">
+        <h2>Step syntax example</h2>
+        <div class="center">
+            <div class="ken"></div>
+        </div>
         <style>
-            #see-more h2 {
-                font-size: 100px
+            .ken {
+                background-image: url('http://front-back.com/wp-content/uploads/2013/01/ken.png');
+                background-position: 0 -160px;
+                background-size: 980px 1600px;
+                height: 160px;
+                width: 140px;
             }
 
-            #see-more img {
-                width: 0.72em;
-                height: 0.72em;
+            .ken:hover {
+                animation: move 0.5s steps(3) infinite;
+            }
+
+            @keyframes move {
+                to {
+                    background-position: -420px -160px;
+                }
             }
         </style>
+    </section>
+
+   <section class="slide">
+        <h2>Browser support</h2>
+        <img src="http://dl4.joxi.net/drive/2018/09/17/0010/1305/689433/33/27fa65e8f9.png" style="width: 100%">
     </section>
 
     <footer class="badge">
